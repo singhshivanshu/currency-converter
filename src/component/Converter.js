@@ -17,7 +17,7 @@ function Converter() {
       headers: {
         "content-type": "application/octet-stream",
         "x-rapidapi-host": "fixer-fixer-currency-v1.p.rapidapi.com",
-        "x-rapidapi-key": "6b406db11dmsh100c7214dffbbd2p1f00e3jsnb9762ce88983",
+        "x-rapidapi-key": process.env.REACT_APP_FIXER_KEY,
         useQueryString: true,
       },
     })
@@ -52,7 +52,7 @@ function Converter() {
       headers: {
         "content-type": "application/octet-stream",
         "x-rapidapi-host": "fixer-fixer-currency-v1.p.rapidapi.com",
-        "x-rapidapi-key": "6b406db11dmsh100c7214dffbbd2p1f00e3jsnb9762ce88983",
+        "x-rapidapi-key": process.env.REACT_APP_FIXER_KEY,
         useQueryString: true,
       },
       params: {
@@ -99,7 +99,7 @@ function Converter() {
           placeholder="From"
         />
         <button className="item swap btn" onClick={swapValue}>
-          <i class="fas fa-exchange-alt fa-2x"></i>
+          <i className="fas fa-exchange-alt fa-2x"></i>
         </button>
 
         <Select
@@ -111,7 +111,7 @@ function Converter() {
         />
 
         <button className="item convert btn" onClick={() => convertCurrency(fromValue, toValue)}>
-          <i class="fas fa-arrow-alt-circle-right fa-2x"></i>
+          <i className="fas fa-arrow-alt-circle-right fa-2x"></i>
         </button>
       </div>
       <br/>
