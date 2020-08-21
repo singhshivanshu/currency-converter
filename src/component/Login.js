@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 function Login() {
   const [userName, setUserName] = useState("");
   const [pass, setPass] = useState("");
+  const [match, setMatch] = useState(false)
 
   const history = useHistory();
 
@@ -15,7 +16,9 @@ function Login() {
     ) {
       localStorage.setItem("token", true);
       history.push("/converter");
+      setMatch(false)
     } else {
+      setMatch(true)
       console.log("Inncorrect credentials");
     }
   };
@@ -52,6 +55,7 @@ function Login() {
               Login
             </button>
           )}
+          {match && <p>Incorrect password</p>}
         </div>
       </form>
     </div>

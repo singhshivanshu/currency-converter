@@ -58,7 +58,7 @@ function Signup() {
         </div>
         <div className="input-filed btn-class">
           {userName && pass && confirmPass && pass === confirmPass ? (
-            <button type="submit">Signup</button>
+            <button type="submit" className="input-filed submit-btn">Signup</button>
           ) : (
             <button type="submit" disabled className="input-filed submit-btn">
               Signup

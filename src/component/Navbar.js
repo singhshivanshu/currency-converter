@@ -3,8 +3,6 @@ import { useHistory } from "react-router-dom";
 
 function Navbar() {
   const history = useHistory();
-  
-
 
   return (
     <div className="navbar_container">
