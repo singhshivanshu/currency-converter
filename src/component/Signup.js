@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin } from "react-google-login";
 
 function Signup() {
   const [userName, setUserName] = useState("");
@@ -72,12 +72,15 @@ function Signup() {
           >
             Login
           </button>
-            <br/>
-            <br/>
+          <br />
+          <br />
           <GoogleLogin
             clientId="307667420212-cb6oggdvoo3ek716kuqtfv3r71gpuu4h.apps.googleusercontent.com"
             buttonText="Login using Google"
-            onSuccess={() => history.push("/converter")}
+            onSuccess={() => {
+              localStorage.setItem("token", true);
+              history.push("/converter");
+            }}
             onFailure={(response) => console.log(response)}
             cookiePolicy={"single_host_origin"}
           />

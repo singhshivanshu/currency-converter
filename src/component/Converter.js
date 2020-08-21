@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Select from "react-select";
+import { useHistory } from "react-router-dom";
 
 function Converter() {
   const [currency, setCurrency] = useState(null);
@@ -8,6 +9,9 @@ function Converter() {
   const [toValue, setToValue] = useState("");
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
+  const [token, setToken] = useState(localStorage.getItem("token"));
+
+  const history = useHistory();
 
   // all the currencies to select
   const fetchCurrencyData = () => {
@@ -43,7 +47,6 @@ function Converter() {
       options.push(obj);
     });
 
-  console.log(fromValue, toValue);
   // to convert the currency
   const convertCurrency = (fromValue, toValue) => {
     axios({
@@ -78,10 +81,9 @@ function Converter() {
     convertCurrency(toValue, temp);
   };
 
-  console.log(result);
-
   return (
-    <>
+    <>{token ? 
+      <>
       <div className="main">
         <input
           className="item amount"
@@ -110,17 +112,40 @@ function Converter() {
           placeholder="To"
         />
 
-        <button className="item convert btn" onClick={() => convertCurrency(fromValue, toValue)}>
+        <button
+          className="item convert btn"
+          onClick={() => convertCurrency(fromValue, toValue)}
+        >
           <i className="fas fa-arrow-alt-circle-right fa-2x"></i>
         </button>
       </div>
-      <br/>
+      <br />
       {result ? (
         <div className="result">
-          <span className="from">{`${result.query.amount} ${result.query.from} =`}</span><br/>
-          <span className="to">{`${result.result} `}</span><span className="from">{result.query.to}</span>
+          <span className="from">{`${result.query.amount} ${result.query.from} =`}</span>
+          <br />
+          <span className="to">{`${result.result} `}</span>
+          <span className="from">{result.query.to}</span>
         </div>
       ) : null}
+        <br/>
+        <br/>
+        <br/>
+      <div className="result">
+        <button
+          className="submit-btn"
+          onClick={() => {
+            localStorage.removeItem("token");
+            setToken('')
+            history.push("/login");
+          }}
+        >
+          Logout
+        </button>
+      </div>
+      
+      </> : <h2 style={{textAlign: "center"}}>Please login</h2>
+    }
     </>
   );
 }

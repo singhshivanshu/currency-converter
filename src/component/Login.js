@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-
 function Login() {
   const [userName, setUserName] = useState("");
   const [pass, setPass] = useState("");
@@ -14,6 +13,7 @@ function Login() {
     if (
       users.find((user) => user.userName === userName && user.pass === pass)
     ) {
+      localStorage.setItem("token", true);
       history.push("/converter");
     } else {
       console.log("Inncorrect credentials");
@@ -44,7 +44,9 @@ function Login() {
         </div>
         <div className="input-filed btn-class">
           {userName && pass ? (
-            <button type="submit" className="input-filed submit-btn">Login</button>
+            <button type="submit" className="input-filed submit-btn">
+              Login
+            </button>
           ) : (
             <button disabled className="input-filed submit-btn">
               Login

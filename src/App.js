@@ -16,7 +16,6 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/converter" component={Converter} />
       </Switch>
-     
     </div>
   );
 }
