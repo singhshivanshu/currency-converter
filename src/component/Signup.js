@@ -75,7 +75,7 @@ function Signup() {
             <br/>
             <br/>
           <GoogleLogin
-            clientId="955175867113-1lsi8540v334mi4prvbkl6khgfrk732t.apps.googleusercontent.com"
+            clientId="307667420212-cb6oggdvoo3ek716kuqtfv3r71gpuu4h.apps.googleusercontent.com"
             buttonText="Login using Google"
             onSuccess={() => history.push("/converter")}
             onFailure={(response) => console.log(response)}
